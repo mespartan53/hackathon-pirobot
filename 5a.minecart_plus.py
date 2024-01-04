@@ -14,11 +14,7 @@
 '''
 from picarx import Picarx
 from time import sleep
-
-from robot_hat import TTS
 import readchar
-
-tts = TTS()
 
 px = Picarx()
 # px = Picarx(grayscale_pins=['A0', 'A1', 'A2'])
@@ -26,9 +22,9 @@ px = Picarx()
 px.set_line_reference([80, 78, 71])
 
 current_state = None
+
 px_power = 20
 offset = 30
-
 reverse_delay = 0.1
 
 def get_status(val_list):
@@ -46,8 +42,6 @@ last_gm_state = ''
 key = 'z'
 
 if __name__=='__main__':
-    tts.lang("en-US")
-    #tts.say('Chad G P T ready')
     try:
         while True:
             if key == 'z':
@@ -70,30 +64,30 @@ if __name__=='__main__':
 
             if gm_state == "stop":
                 px.stop()
+                
                 if last_gm_state == 'left':
                     px.set_dir_servo_angle(-offset)
                     px.forward(-px_power)
                     sleep(reverse_delay)
-                    #tts.say('Beep')
+                    
                 elif last_gm_state == 'right':
                     px.set_dir_servo_angle(offset)
                     px.forward(-px_power)
                     sleep(reverse_delay)
-                    #tts.say('Beep')
+                    
             elif gm_state == 'forward':
                 px.set_dir_servo_angle(0)
                 px.forward(px_power)
-                #tts.say('Vroom')
+                
             elif gm_state == 'left':
                 px.set_dir_servo_angle(offset)
                 px.forward(px_power*0.25)
                 last_gm_state = gm_state
-                #tts.say('Err')
+                
             elif gm_state == 'right':
                 px.set_dir_servo_angle(-offset)
                 px.forward(px_power*0.25)
                 last_gm_state = gm_state
-                #tts.say('Err')
     finally:
         px.stop()
         print("stop and exit")
