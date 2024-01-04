@@ -24,6 +24,7 @@ px.set_line_reference([80, 78, 71])
 current_state = None
 
 px_power = 20
+power_modifier = 0.25
 offset = 30
 reverse_delay = 0.1
 
@@ -51,6 +52,7 @@ if __name__=='__main__':
 
             if key == 'y':
                 px_power = float(input('Enter speed: '))
+                power_modifier = float(input('Enter speed modifier: '))
                 offset = float(input('Enter turn offset: '))
                 reverse_delay = float(input('Enter reverse delay: '))
 
@@ -81,12 +83,12 @@ if __name__=='__main__':
                 
             elif gm_state == 'left':
                 px.set_dir_servo_angle(offset)
-                px.forward(px_power*0.25)
+                px.forward(px_power*power_modifier)
                 last_gm_state = gm_state
                 
             elif gm_state == 'right':
                 px.set_dir_servo_angle(-offset)
-                px.forward(px_power*0.25)
+                px.forward(px_power*power_modifier)
                 last_gm_state = gm_state
     finally:
         px.stop()
