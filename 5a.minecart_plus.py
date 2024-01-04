@@ -52,7 +52,7 @@ if __name__=='__main__':
         while True:
             if key == 'z':
                 print('Would you like to adjust any values (y/n): ')
-                key = readchar.readKey()
+                key = readchar.readkey()
                 key = key.lower()
 
             if key == 'y':
@@ -61,7 +61,7 @@ if __name__=='__main__':
                 reverse_delay = float(input('Enter reverse delay: '))
 
                 print('Press any key to start.')
-                readchar.readKey()
+                readchar.readkey()
                 key = 'n'
 
             gm_val_list = px.get_grayscale_data()
