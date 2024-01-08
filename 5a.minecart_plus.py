@@ -58,7 +58,12 @@ if __name__=='__main__':
 
                 print('Press any key to start.')
                 readchar.readkey()
-                key = 'n'
+                key = 'q'
+                
+            if key == 'n':
+                print('Press any key to start.')
+                readchar.readkey()
+                key = 'q'
 
             gm_val_list = px.get_grayscale_data()
             gm_state = get_status(gm_val_list)
