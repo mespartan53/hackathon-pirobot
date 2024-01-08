@@ -23,8 +23,8 @@ px.set_line_reference([80, 78, 71])
 
 current_state = None
 
-px_power = 20
-power_modifier = 0.25
+px_power = 25 #20
+power_modifier = 0.5 #0.25
 offset = 30
 reverse_delay = 0.1
 
